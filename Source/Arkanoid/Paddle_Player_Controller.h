@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "Paddle.h"
 #include "Paddle_Player_Controller.generated.h"
+
 
 
 //class ABall
@@ -14,6 +16,7 @@
 UCLASS()
 class ARKANOID_API APaddle_Player_Controller : public APlayerController
 {
+
 	GENERATED_BODY()
 		APaddle_Player_Controller();
 
@@ -25,4 +28,7 @@ protected:
 	void MoveHorizontal(float AxisValue);
 
 	// ball references
+
+private:
+	APaddle * MyPaddle;
 };
