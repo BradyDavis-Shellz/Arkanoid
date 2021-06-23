@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "Paddle.h"
+#include "Ball.h"
 #include "Paddle_Player_Controller.generated.h"
 
 
@@ -23,11 +24,25 @@ class ARKANOID_API APaddle_Player_Controller : public APlayerController
 	UFUNCTION()
 		virtual void SetupInputComponent() override;
 
+public: 
+	void SpawnNewBall();
+
 protected:
 	virtual void BeginPlay() override;
 	void MoveHorizontal(float AxisValue);
 
 	// ball references
+
+	void Launch();
+	
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<ABall> BallObj;
+
+	ABall* MyBall;
+
+	FVector SpawnLocation = FVector(10.0f, 0.0f, 40.0f);
+	FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
+	FActorSpawnParameters SpawnInfo;
 
 private:
 	APaddle * MyPaddle;
